@@ -8,10 +8,10 @@ const taskRouter = express.Router()
 
 //Gets all Tasks 
 taskRouter.get("/tasks", (req, res) => {
-    taskApi,getAllTasks()
-    .then(allTasks) => {
+    taskApi.getAllTasks() 
+    .then((allTasks) => {
         res.json(allTasks)
-    }
+    })
 })
 
 //Gets a single task
