@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useParams } from "react-router-dom"
 
 function SingleTask (props) {
     //Setting state
@@ -10,13 +11,13 @@ function SingleTask (props) {
         description: "",
         __v: 0
     }
+    const { id } = useParams();
 
     const [singleTask, setTask] = useState(initialTaskState)
 
     //Axios GEt request to pull by ID from the DB
-
     const fetchSingTask = (id) => {
-        axios.get(`/api/tasks/${id}`, id)
+        axios.get(`/api/tasks/${id}`)
         .then((res) => {
             setTask(res.data)
             console.log(res.data)
@@ -27,13 +28,19 @@ function SingleTask (props) {
     }
 
     useEffect(() => {
-        fetchSingTask(props.match.params.id)
-    }, [props.match.params.id]) 
+        fetchSingTask(id)
+    }, [id]) 
 
     return(
         <div>
+            <h1>
+                {singleTask.title}
+            </h1>
+            <h2>
+                {singleTask.created_by}
+            </h2>
             <p>
-                {singleTask}
+                {singleTask.description}
             </p>
         </div>
     )
