@@ -1,7 +1,7 @@
 const mongoose = require("./connection.js")
 
 //Schema for adding a new ToDo item
-const TaskSchema = new.mongoose.Schema({
+const TaskSchema = new mongoose.Schema({
     title: '',
     created_by: '',
     description: ''
