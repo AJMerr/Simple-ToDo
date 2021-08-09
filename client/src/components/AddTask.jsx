@@ -9,16 +9,18 @@ function AddTask () {
         title: "",
         created_by: "",
         description: "",
-        __v: 9
+        __v: 0
     }
 
     const [task, setTask] = useState(initialTaskState)
 
+    //Change handler to add a new task
     const changeHandler = e => {
         const { name, value } = e.target
         setTask({...task, [name]: value})
     }
 
+    //Axios API call to create a new Task
     const createTask = (e) => {
         e.preventDefault()
 
