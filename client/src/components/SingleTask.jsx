@@ -20,7 +20,6 @@ function SingleTask (props) {
         axios.get(`/api/tasks/${id}`)
         .then((res) => {
             setTask(res.data)
-            console.log(res.data)
         })
         .catch (err => {
             console.log(err)
@@ -29,7 +28,23 @@ function SingleTask (props) {
 
     useEffect(() => {
         fetchSingTask(id)
-    }, [id]) 
+    }, [id])
+
+    // const changeHandler = (e) => {
+    //    const { name, value } = e.target
+      //  setTask({...singleTask, [name]: value})
+   // }
+ 
+    const deleteTask = () => (
+        axios.delete(`/api/tasks/${id}`)
+        .then(res => {
+            console.log(res.data)
+            props.history.push("/")
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    )
 
     return(
         <div>
@@ -42,6 +57,9 @@ function SingleTask (props) {
             <p>
                 {singleTask.description}
             </p>
+            <button onClick={deleteTask}>
+                Delete
+            </button>
         </div>
     )
 }
