@@ -22,7 +22,7 @@ app.use(express.static(`${__dirname}/client/build`))
 
 //adds a route to serve up the built react app for any request not made to my API
 app.use('/', (req, res) => {
-    res.sendFile(`${__dirname}/client/build/`)
+    res.sendFile(`${__dirname}/client/build/index.html`)
 })
 
 //Sets the port for the server
