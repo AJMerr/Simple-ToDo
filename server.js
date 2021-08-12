@@ -17,9 +17,8 @@ app.use(methodOverride('_method'))
 app.use("/api/", taskRouter)
 
 //Uses the client/build directory to host CSS and images
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static(`${__dirname}/client/build`))
-}
+app.use(express.static(`${__dirname}/client/build`))
+
 
 //adds a route to serve up the built react app for any request not made to my API
 app.get('/*', (req, res) => {
