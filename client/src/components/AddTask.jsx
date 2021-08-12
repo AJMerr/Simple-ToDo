@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Typography, AppBar, Card, CardActions, CardContent, CssBaseline, Grid, Toolbar, Container, Button, InputLabel } from "@material-ui/core"
+import ListIcon from '@material-ui/icons/List';
+import Input from '@material-ui/core/Input';
+import { Link as RouterLink } from "react-router-dom"
 
 function AddTask () {
 
@@ -37,41 +41,59 @@ function AddTask () {
                 created_by: res.data.created_by,
                 description: res.data.description,
                 __v: res.data.__v
-
             })
         })
     }
 
     return (
-        <div>
-            <form>
-                <label>New Title: </label>
-                <input
-                type="text"
-                id="title"
-                value={task.title}
-                onChange={changeHandler}
-                name="title"
-                />
-                <label>Created by: </label>
-                <input
-                type="text"
-                id="created_by"
-                value={task.created_by}
-                onChange={changeHandler}
-                name="created_by"
-                />
-                <label>Description: </label>
-                <input
-                type="text"
-                id="description"
-                value={task.description}
-                onChange={changeHandler}
-                name="description"
-                />
-                <button onClick={createTask}>Submit</button>
-            </form>
-        </div>
+        <>
+        <CssBaseline />
+        <AppBar position="relative">
+          <Toolbar>
+            <ListIcon  />
+            <Typography>Simple ToDo</Typography>
+          </Toolbar>
+        </AppBar>
+        <main>
+            <div>
+                <Container maxWidth="md">
+                <Typography variant="h2" align="center" color="textPrimary" gutterBottom>Create a Task</Typography>
+                    <form>
+                        <Grid container spacing="10" justifyContent="center">
+                            <Grid item>
+                                <InputLabel>New Title: </InputLabel>
+                                <Input
+                                type="text"
+                                id="title"
+                                value={task.title}
+                                onChange={changeHandler}
+                                name="title"
+                                />
+                                <InputLabel>Created by: </InputLabel>
+                                <Input
+                                type="text"
+                                id="created_by"
+                                value={task.created_by}
+                                onChange={changeHandler}
+                                name="created_by"
+                                />
+                                <InputLabel>Description: </InputLabel>
+                                <Input
+                                type="text"
+                                id="description"
+                                value={task.description}
+                                onChange={changeHandler}
+                                name="description"
+                                />
+                                <Button color="primary" onClick={createTask}>Submit</Button>
+                                <Button color="primary" component={RouterLink} to="/">Home</Button>
+                            </Grid>
+                        </Grid>
+                    </form>
+                </Container>
+            </div>
+        </main>
+        </>
     )
 }
 
