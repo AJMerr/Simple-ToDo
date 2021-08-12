@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Typography, AppBar, Card, CardActions, CardContent, CssBaseline, Grid, Toolbar, Container, Button } from "@material-ui/core"
 import ListIcon from '@material-ui/icons/List';
+import { Link as RouterLink } from "react-router-dom"
 
 function AllTasks () {
 
@@ -36,7 +37,7 @@ function AllTasks () {
             <div>
               <Grid container spacing="2" justify="center">
                 <Grid item>
-                  <Button variant="contained" color="primary" href="http://localhost:3000/create">
+                  <Button variant="contained" color="primary" component={RouterLink} to="/create">
                     Create a task
                   </Button>
                 </Grid>
