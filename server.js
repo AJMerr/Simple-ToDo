@@ -17,7 +17,9 @@ app.use(methodOverride('_method'))
 app.use("/api/", taskRouter)
 
 //Uses the client/build directory to host CSS and images
-app.use(express.static(`${__dirname}/client/build`))
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(`${__dirname}/client/build`))
+}
 
 //Sets the port for the server
 const PORT = process.env.PORT || 8080
