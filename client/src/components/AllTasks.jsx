@@ -35,7 +35,7 @@ function AllTasks () {
               This is a simple ToDo webapp built using the MERN Stack and my first test utilizing React Hooks
             </Typography>
             <div>
-              <Grid container spacing="2" justify="center">
+              <Grid container spacing={2} justifyContent="center">
                 <Grid item>
                   <Button variant="contained" color="primary" component={RouterLink} to="/create">
                     Create a task
@@ -48,7 +48,7 @@ function AllTasks () {
         <Container maxWidth="md">
         <div> {taskList.map((val, key) => {
           return <div>
-          <Grid container spacing="4">
+          <Grid container spacing={4}>
             <Grid item>
               <Card>
                 <CardContent>

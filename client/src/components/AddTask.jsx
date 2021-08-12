@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Typography, AppBar, Card, CardActions, CardContent, CssBaseline, Grid, Toolbar, Container, Button, InputLabel } from "@material-ui/core"
+import { Typography, AppBar, CssBaseline, Grid, Toolbar, Container, Button, InputLabel } from "@material-ui/core"
 import ListIcon from '@material-ui/icons/List';
 import Input from '@material-ui/core/Input';
 import { Link as RouterLink } from "react-router-dom"
@@ -58,8 +58,9 @@ function AddTask () {
             <div>
                 <Container maxWidth="md">
                 <Typography variant="h2" align="center" color="textPrimary" gutterBottom>Create a Task</Typography>
+                <Typography variant="h5" align="center" color="textSecondary" paragraph>Use this page to create a new task! Once you hit submit, you can return home and you will see your task added to the home page.</Typography>
                     <form>
-                        <Grid container spacing="10" justifyContent="center">
+                        <Grid container spacing={4} justifyContent="center">
                             <Grid item>
                                 <InputLabel>New Title: </InputLabel>
                                 <Input
