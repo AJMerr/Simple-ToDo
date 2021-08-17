@@ -47,6 +47,7 @@ function AllTasks () {
         </div>
         <Container maxWidth="md">
         <div> {taskList.map((val, key) => {
+          const id = val._id
           return <div>
           <Grid container spacing={4}>
             <Grid item>
@@ -61,6 +62,7 @@ function AllTasks () {
                   <Typography variant="h6" color="textPrimary" paragraph>
                     {val.description}
                   </Typography>
+                  <Button variant="contained" color="primary" component={RouterLink} to={`/task/${id}`}>Modify this task</Button>
                 </CardContent>
               </Card>
             </Grid>
