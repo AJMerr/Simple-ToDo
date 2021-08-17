@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from "react-router-dom"
+import { Typography, AppBar, Card, CardActions, CardContent, CssBaseline, Grid, Toolbar, Container, Button } from "@material-ui/core"
+import ListIcon from '@material-ui/icons/List';
 
 function SingleTask (props) {
     //Setting state
@@ -11,6 +13,8 @@ function SingleTask (props) {
         description: "",
         __v: 0
     }
+
+
     const { id } = useParams();
 
     const [singleTask, setTask] = useState(initialTaskState)
@@ -47,20 +51,49 @@ function SingleTask (props) {
     )
 
     return(
-        <div>
-            <h1>
-                {singleTask.title}
-            </h1>
-            <h2>
-                {singleTask.created_by}
-            </h2>
-            <p>
-                {singleTask.description}
-            </p>
-            <button onClick={deleteTask}>
-                Delete
-            </button>
-        </div>
+        <>
+        <CssBaseline />
+        <AppBar position="relative">
+          <Toolbar>
+            <ListIcon  />
+            <Typography>Simple ToDo</Typography>
+          </Toolbar>
+        </AppBar>
+            <main>
+                <div>
+                <Container maxWidth="sm">
+                    <Typography variant="h3" align="center" color="textPrimary" gutterBottom>Your Task</Typography>
+                    <Typography variant="h6" align="center" color="textSecondary" paragraph>
+                    This page displays your single task, you can view it or delete it. Once pressing delete, return to the home page.
+                    </Typography>
+                </Container>
+                </div>
+                <div>
+                    <Container maxWidth="md">
+                    <Grid container spacing={4} justifyContent="center">
+                    <Grid item>
+                    <Card>
+                        <CardContent>
+                            <Typography variant="h5" color="textPrimary" gutterBottom>
+                                {singleTask.title}
+                            </Typography>
+                            <Typography variant="h6" color="textSecondary">
+                                {singleTask.created_by}
+                            </Typography>
+                            <Typography variant="h6" color="textPrimary" paragraph>
+                                {singleTask.description}    
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                    <Button onClick={deleteTask}>
+                        Delete
+                    </Button>
+                    </Grid>
+                    </Grid>
+                    </Container>
+                </div>
+            </main>
+        </>
     )
 }
 
