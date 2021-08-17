@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from "react-router-dom"
 import { Typography, AppBar, Card, CardActions, CardContent, CssBaseline, Grid, Toolbar, Container, Button } from "@material-ui/core"
 import ListIcon from '@material-ui/icons/List';
+import { Link as RouterLink } from "react-router-dom"
 
 function SingleTask (props) {
     //Setting state
@@ -64,7 +65,7 @@ function SingleTask (props) {
                 <Container maxWidth="sm">
                     <Typography variant="h3" align="center" color="textPrimary" gutterBottom>Your Task</Typography>
                     <Typography variant="h6" align="center" color="textSecondary" paragraph>
-                    This page displays your single task, you can view it or delete it. Once pressing delete, return to the home page.
+                    This page displays your single task. You can view it, edit it, or delete it. Once pressing delete, return to the home page.
                     </Typography>
                 </Container>
                 </div>
@@ -85,9 +86,9 @@ function SingleTask (props) {
                             </Typography>
                         </CardContent>
                     </Card>
-                    <Button onClick={deleteTask}>
-                        Delete
-                    </Button>
+                    <Button onClick={deleteTask}>Delete</Button>
+                    <Button color="primary" component={RouterLink} to={`../task/edit/${id}`}>edit</Button>
+                    <Button color="primary" component={RouterLink} to="/">Home</Button>
                     </Grid>
                     </Grid>
                     </Container>
